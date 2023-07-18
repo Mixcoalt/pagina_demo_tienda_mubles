@@ -1,0 +1,31 @@
+.contenedor-blog{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.tags{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tags p{
+    font-weight: bold;
+}
+
+.tags span{
+    color: #03a9f4;
+}
+
+.info-blog p{
+    text-align: justify;
+}
+
+.entrada{
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 4rem;
+    margin-bottom: 2rem;
+}
+.entrada:last-of-type{
+    border: none;
+}
