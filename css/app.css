@@ -3,6 +3,7 @@
 @import url(entrada.css);
 @import url(galeria.css);
 @import url(formulario.css);
+@import url(queries.css);
 
 html {
   box-sizing: border-box;
@@ -21,17 +22,33 @@ line-height: 2;
 /**Globales*/
 h1, h2, h3{
   font-family: 'Playfair Display', serif;
-  margin: 0 0 5rem 0;
+  margin: 0 0 2rem 0;
 }
 h1{
-  font-size: 5rem;
-}
-h2{
   font-size: 4rem;
 }
-h3{
-  font-size: 3rem;
+@media (min-width: 768px) {
+     h1{
+      font-size: 5rem;
+     }
 }
+h2{
+  font-size: 3.2rem;
+}
+@media (min-width: 768px) {
+     h2{
+      font-size: 4rem;
+     }
+}
+h3{
+  font-size: 2.4rem;
+}
+@media (min-width: 768px) {
+     h3{
+      font-size: 3rem;
+     }
+}
+
 a{
   text-decoration: none;
   color: #000000;
@@ -89,7 +106,8 @@ img{
 .nav-principal{
   padding: 2rem 0 2rem 0 ;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav-principal a{
@@ -97,6 +115,13 @@ img{
   text-transform: uppercase;
   font-weight: bold;
   padding: 2rem;
+}
+
+@media (min-width: 768px) {
+     .nav-principal{
+      flex-direction: row;
+      justify-content: space-between;
+     }
 }
 
 .nav-principal a:hover{
@@ -115,28 +140,48 @@ img{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 55rem;
+  height: 25rem;
+}
+
+@media (min-width: 768px) {
+     .hero{
+      height: 55rem;
+     }
 }
 
 /*Categorias*/
 
 .categorias{
-  margin-top: 5rem;
-
-  margin-bottom: 5rem;
+ padding: 5rem 0;
 }
 
-.contenedor-categorias{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+.contenido-categorias{
+  margin-bottom: 2rem;
 }
+@media (min-width: 768px) {
+  .contenido-categorias{
+  margin-bottom: 0;  
+  }    
+}
+
+.contenido-categorias img{
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .contenedor-categorias{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
 .contenido-categorias a{
  display: block;
  text-align: center;
  padding: 2rem; /*separacion*/
  font-size: 2rem;
- font-weight: 900;
+
 }
 .contenedor-categorias a:hover{
   background-color: #037bc0;
@@ -147,29 +192,44 @@ img{
 
 /*Bloque nosotros */
 .sobre-nosotros{
-  background-image: linear-gradient(to right, transparent 50%, #037bc0 50%, #037bc0 100%), url(../Imagenes/nosotros.jpg);
-  padding: 10rem 0;
-  background-position: left center;
+  background-image: linear-gradient(to bottom, transparent 50%, #037bc0 50%, #037bc0 100%), url(../Imagenes/nosotros.jpg);
+  background-position: center, top left;
   background-repeat: no-repeat;
-  background-size: 100%, 120rem ;
+  background-size: 100%, 70rem;
+}
+
+@media (min-width: 768px) {
+  .sobre-nosotros{
+    background-image: linear-gradient(to right, transparent 50%, #037bc0 50%, #037bc0 100%), url(../Imagenes/nosotros.jpg);
+    padding: 10rem 0;
+    background-position: left center;
+    background-size: 100%, 160rem ;
+  }
 }
 
 .sobre-nosotros-grid{
-  /*display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;*/
-
-  display: flex;
-  justify-content: flex-end;
-  text-align: justify;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+@media (min-width: 768px) {
+     .sobre-nosotros-grid{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: unset;
+      column-gap: 10rem;
+     }
 }
 
 .texto-nosotros{
- /* grid-column: 2 / 3;*/
- flex-basis: 50%;
- padding-left: 10rem;
+ grid-row: 2 / 3;
+ /* flex-basis: 50%; */
+ padding: 5rem;
  color: #fff;
- 
+}
+
+@media (min-width: 768px) {
+     .texto-nosotros{
+      grid-column: 2 / 3;
+     }
 }
 
 /*Listado Productos*/
@@ -178,8 +238,52 @@ img{
   padding-top: 5rem;/*Separacion con el elemento de arriba*/
 }
 
+@media (min-width: 768px) {
+    .listado-productos{
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem;
+    }
+    .producto:nth-child(1){
+      grid-column: 1 / 7;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+    }
+    
+    .producto:nth-child(2){
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+    
+    .producto:nth-child(3){
+      grid-column-start: 4;
+      grid-column-end: 7;
+    }
+    
+    .producto:nth-child(4){
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    
+    .producto:nth-child(5){
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+    
+    .producto:nth-child(6){
+      grid-column-start: 5;
+      grid-column-end: 7;
+    }
+}
+
 .producto{
   background-color: #037bc0;
+  margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+     .producto{
+      margin-bottom: 0;
+     }
 }
 
 .texto-producto h3{
@@ -201,41 +305,7 @@ img{
   font-weight: 900;
 }
 
-.listado-productos{
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 2rem;
-}
-.producto:nth-child(1){
-  grid-column: 1 / 7;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
 
-.producto:nth-child(2){
-  grid-column-start: 1;
-  grid-column-end: 4;
-}
-
-.producto:nth-child(3){
-  grid-column-start: 4;
-  grid-column-end: 7;
-}
-
-.producto:nth-child(4){
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-.producto:nth-child(5){
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-
-.producto:nth-child(6){
-  grid-column-start: 5;
-  grid-column-end: 7;
-}
 
 /*Object fit a los productos*/
 
@@ -270,17 +340,36 @@ img{
 
 .footer h3{
   margin: 0 0 .5rem 0;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+     .footer h3{
+      text-align: left;
+     }
 }
 
 .footer-categorias{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+ display: block;
+ text-align: center;
 }
 
-.footer-categorias nav{
-  display: flex;
-  flex-direction: column;
+@media (min-width: 768px) {
+  .footer-categorias{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.footer-menu a{
+  display: block;
+  text-align: center;
+}
+@media (min-width: 768px) {
+     .footer-menu a{
+      text-align: left;
+     }
 }
 
 .footer .copy{
@@ -290,3 +379,36 @@ img{
   font-size: 2rem;
 }
 
+.footer-categorias > div{
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+     .footer-menu > div{
+      margin-bottom: 0;
+     }
+}
+
+/**Nosotros**/
+.nosotros{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+@media (min-width: 768px) {
+     .nosotros{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-columns: repeat(auto-fit, minmax(25rem 1fr));
+        gap: 4rem;
+     }
+}
+
+.info-nosotros{
+  margin-top: -2.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+}
